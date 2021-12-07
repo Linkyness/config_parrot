@@ -43,6 +43,8 @@ wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/Hack.zip -
 sudo unzip $DESCARGAS/Hack.zip -d /usr/share/fonts/
 fc-cache -v
 
+mkdir $DESCARGAS/Firefox/
+
 read -n 1 -p "Download last version of Firefox in '$DESCARGAS' folder" input
 
 sudo chown $USER:$USER /opt/
@@ -87,5 +89,39 @@ git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/powerlevel10k
 cp ./.zshrc $HOMEDIR
 cp ./.p10k.zsh $HOMEDIR
 
-(cd /root && sudo ln -s -f $HOMEDIR/.zshrc .zshrc)
-cp ./p10k.zsh /root
+(cd /root && git clone --depth=1 https://github.com/romkatv/powerlevel10k.git /root/powerlevel10k && sudo ln -s -f $HOMEDIR/.zshrc .zshrc)
+cp ./.p10k_root.zsh /root/.p10k.zsh
+
+usermod --shell /usr/bin/zsh $USER
+usermod --shell /usr/bin/zsh root
+
+sudo chown $USER:$USER /root
+sudo chown $USER:$USER /root/.cache -R
+sudo chown $USER:$USER /root/.local -R
+
+sudo apt update
+sudo apt install -y bat ranger
+
+wget https://github.com/Peltoche/lsd/releases/download/0.20.1/lsd-musl_0.20.1_amd64.deb -P $DESCARGAS/
+sudo dpkg -i lsd-musl_0.20.1_amd64.deb
+
+git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+~/.fzf/install
+
+
+sudo mkdir /usr/share/zsh-plugins/
+sudo chown $USER:$USER /usr/share/zsh-plugins
+wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/plugins/sudo/sudo.plugin.zsh -P /usr/share/zsh-plugins/
+
+rm -r $HOMEDIR/.config/nvim
+cp -r ./nvim $HOMEDIR/.config
+sudo rm -r /root/.config/nvim
+sudo cp -r ./nvim /root/.config
+
+git clone https://github.com/gpakosz/.tmux.git $HOMEDIR/.tmux
+ln -s -f $HOMEDIR/.tmux/.tmux.conf
+cp $HOMEDIR/.tmux/.tmux.conf.local $HOMEDIR
+
+sudo git clone https://github.com/gpakosz/.tmux.git /root/.tmux
+sudo ln -s -f /root/.tmux/.tmux.conf
+sudo cp /root/.tmux/.tmux.conf.local /root
