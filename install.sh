@@ -16,7 +16,7 @@ sudo apt install -y bspwm
 
 mkdir $HOMEDIR/.config/bspwm
 mkdir $HOMEDIR/.config/sxhkd
-envsubst < ./bspwm_template > $HOMEDIR/.config/bspwm/bspwmrc
+envsubst < ./bspwmrc_template > $HOMEDIR/.config/bspwm/bspwmrc
 chmod +x $HOMEDIR/.config/bspwm/bspwmrc
 envsubst < ./sxhkdrc_template > $HOMEDIR/.config/sxhkd/sxhkdrc
 
@@ -89,15 +89,15 @@ git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/powerlevel10k
 cp ./.zshrc $HOMEDIR
 cp ./.p10k.zsh $HOMEDIR
 
+sudo chown $USER:$USER /root
+sudo chown $USER:$USER /root/.cache -R
+sudo chown $USER:$USER /root/.local -R
+
 (cd /root && git clone --depth=1 https://github.com/romkatv/powerlevel10k.git /root/powerlevel10k && sudo ln -s -f $HOMEDIR/.zshrc .zshrc)
 cp ./.p10k_root.zsh /root/.p10k.zsh
 
 usermod --shell /usr/bin/zsh $USER
 usermod --shell /usr/bin/zsh root
-
-sudo chown $USER:$USER /root
-sudo chown $USER:$USER /root/.cache -R
-sudo chown $USER:$USER /root/.local -R
 
 sudo apt update
 sudo apt install -y bat ranger
@@ -106,7 +106,7 @@ wget https://github.com/Peltoche/lsd/releases/download/0.20.1/lsd-musl_0.20.1_am
 sudo dpkg -i $DESCARGAS/lsd-musl_0.20.1_amd64.deb
 
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
-~/.fzf/install
+~/.fzf/install | y
 
 
 sudo mkdir /usr/share/zsh-plugins/
