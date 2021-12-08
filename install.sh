@@ -4,6 +4,7 @@ HOMEDIR=/home/$USER
 DESCARGAS=$HOMEDIR/Descargas
 
 sudo apt update -y
+sudo parrot-upgrade -y
 sudo apt install -y build-essential git vim xcb libxcb-util0-dev libxcb-ewmh-dev libxcb-randr0-dev libxcb-icccm4-dev libxcb-keysyms1-dev libxcb-xinerama0-dev libasound2-dev libxcb-xtest0-dev libxcb-shape0-dev libuv1-dev
 
 git clone https://github.com/baskerville/bspwm.git $DESCARGAS/bspwm
