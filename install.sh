@@ -125,3 +125,8 @@ cp $HOMEDIR/.tmux/.tmux.conf.local $HOMEDIR
 sudo git clone https://github.com/gpakosz/.tmux.git /root/.tmux
 sudo ln -s -f /root/.tmux/.tmux.conf
 sudo cp /root/.tmux/.tmux.conf.local /root
+
+mkdir $HOMEDIR/tools
+wget "https://github.com/diego-treitos/linux-smart-enumeration/raw/master/lse.sh" -P $HOMEDIR/tools
+chmod +x $HOMEDIR/tools/lse.sh
+
