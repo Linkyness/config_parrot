@@ -1,4 +1,4 @@
-#!/usr/bin/bash~
+#!/usr/bin/bash
 
 HOMEDIR=/home/$USER
 DESCARGAS=$HOMEDIR/Descargas
