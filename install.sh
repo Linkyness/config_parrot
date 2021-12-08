@@ -60,7 +60,7 @@ cp fondo.jpg $HOMEDIR/Images
 cp fondo.png $HOMEDIR/Images
 
 BLUESKY=$DESCARGAS/blue-sky
-git clone git clone https://github.com/VaughnValle/blue-sky.git $BLUESKY
+git clone https://github.com/VaughnValle/blue-sky.git $BLUESKY
 
 mkdir $HOMEDIR/.config/polybar
 cp -r ./polybar/* $HOMEDIR/.config/polybar
@@ -74,7 +74,7 @@ cp ./picom.conf $HOMEDIR/.config/picom
 cp -r ./bin $HOMEDIR/.config/
 chmod +x $HOMEDIR/.config/bin/*
 
-mkdir .p $HOMEDIR/.config/rofi/themes
+mkdir -p $HOMEDIR/.config/rofi/themes
 cp $BLUESKY/nord.rasi $HOMEDIR/.config/rofi/themes
 rofi-theme-selector
 
@@ -103,7 +103,7 @@ sudo apt update
 sudo apt install -y bat ranger
 
 wget https://github.com/Peltoche/lsd/releases/download/0.20.1/lsd-musl_0.20.1_amd64.deb -P $DESCARGAS/
-sudo dpkg -i lsd-musl_0.20.1_amd64.deb
+sudo dpkg -i $DESCARGAS/lsd-musl_0.20.1_amd64.deb
 
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install
