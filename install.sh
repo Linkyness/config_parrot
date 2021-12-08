@@ -3,6 +3,8 @@
 HOMEDIR=/home/$USER
 DESCARGAS=$HOMEDIR/Descargas
 
+export HOMEDIR=$HOMEDIR
+
 sudo apt update -y
 sudo parrot-upgrade -y
 sudo apt install -y build-essential git vim xcb libxcb-util0-dev libxcb-ewmh-dev libxcb-randr0-dev libxcb-icccm4-dev libxcb-keysyms1-dev libxcb-xinerama0-dev libasound2-dev libxcb-xtest0-dev libxcb-shape0-dev libuv1-dev
@@ -97,8 +99,8 @@ sudo chown $USER:$USER /root/.local -R
 (cd /root && git clone --depth=1 https://github.com/romkatv/powerlevel10k.git /root/powerlevel10k && sudo ln -s -f $HOMEDIR/.zshrc .zshrc)
 cp ./.p10k_root.zsh /root/.p10k.zsh
 
-usermod --shell /usr/bin/zsh $USER
-usermod --shell /usr/bin/zsh root
+sudo usermod --shell /usr/bin/zsh $USER
+sudo usermod --shell /usr/bin/zsh root
 
 sudo apt update
 sudo apt install -y bat ranger
@@ -120,11 +122,11 @@ sudo rm -r /root/.config/nvim
 sudo cp -r ./nvim /root/.config
 
 git clone https://github.com/gpakosz/.tmux.git $HOMEDIR/.tmux
-ln -s -f $HOMEDIR/.tmux/.tmux.conf
+ln -s -f $HOMEDIR/.tmux/.tmux.conf $HOMEDIR/.tmux.conf
 cp $HOMEDIR/.tmux/.tmux.conf.local $HOMEDIR
 
 sudo git clone https://github.com/gpakosz/.tmux.git /root/.tmux
-sudo ln -s -f /root/.tmux/.tmux.conf
+sudo ln -s -f /root/.tmux/.tmux.conf /root/.tmux.conf
 sudo cp /root/.tmux/.tmux.conf.local /root
 
 mkdir $HOMEDIR/tools
